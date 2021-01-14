@@ -19,7 +19,7 @@ const inputHandler = debounce((event) => {
             return;
         }
         if (searchQueryQuantity === 1) {
-            console.log(data.name);
+            console.log(data[0].name);
         }
     });
 }, 500);
