@@ -5,7 +5,7 @@ html {
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 body {
@@ -17,4 +17,5 @@ body {
    * CSS image reference example.
    */
   background-image: url('./images/bg-pattern.png');
+  
 }
