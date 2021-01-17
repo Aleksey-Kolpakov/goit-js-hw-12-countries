@@ -7,19 +7,22 @@ import countryMarkup from './templates/country-markup.hbs';
 
 import '@pnotify/core/dist/BrightTheme.css';
 import { error, defaultModules, Stack } from '../node_modules/@pnotify/core/dist/PNotify.js';
-import * as PNotifyMobile from '../node_modules/@pnotify/mobile/dist/PNotifyMobile.js';
+//import * as PNotifyMobile from '../node_modules/@pnotify/mobile/dist/PNotifyMobile.js';
 import { defaults } from '@pnotify/core';
 console.log(defaults);
-defaultModules.set(PNotifyMobile, {});
+//defaultModules.set(PNotifyMobile, {});
 defaults.closer = false;
 defaults.delay = 2000;
-defaults.sticker = true;
-defaults.height = '100px';
+defaults.sticker = false;
+
+
 
 
 // console.log(pnotifyError);
 const inputHandler = debounce((event) => {
     divContainetRef.innerHTML = '';
+    const pnotifyContainerRef=document.querySelector('.pnotify');
+    if (pnotifyContainerRef) { pnotifyContainerRef.innerHTML = ''; }
     const searchQuery = event.target.value;
     fetchCountries(searchQuery).then(data => {
         console.log(data);
@@ -30,8 +33,8 @@ const inputHandler = debounce((event) => {
             error({
                 text: "Notice that's positioned in its own stack.",
                 stack: new Stack({
-                    dir1: 'down', dir2: 'right', // Position from the top left corner.
-                    firstpos1: 90, firstpos2: 90 // 90px from the top, 90px from the left.
+                    dir1: 'top', dir2: 'right', // Position from the top left corner.
+                    firstpos1: 0, firstpos3: 0 // 90px from the top, 90px from the left.
                 })
             });
             return;
@@ -52,4 +55,5 @@ const inputHandler = debounce((event) => {
 
 const divContainetRef = document.querySelector('.js-container');
 const inputRef = document.querySelector('.search-input');
+const pnotifyContainerRef=document.querySelector('.pnotify');
 inputRef.addEventListener('input', inputHandler);
